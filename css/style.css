@@ -1,0 +1,18 @@
+/*
+Nought And Crosses - Style.css
+*/
+
+body{
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    margin: 0px;
+}
+
+header{
+	width: 100%;
+	background: #e56d2b;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+}
+
+
