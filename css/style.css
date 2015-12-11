@@ -15,4 +15,46 @@ header{
 	padding: 10px;
 }
 
+#splash{
+	margin-top: 40px;
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+#splash .btn-x,#splash .btn-y{
+	font-size: 24px;
+	margin: 5px;
+}
+
+#splash .btn-x:active,#splash .btn-y:active,#splash .btn-x:hover,#splash .btn-y:hover{
+	background-color: #5a8de5;
+	color: #fff;
+}
+
+#splash .btn-play{
+	background-color: #e56d2b;
+	color: #fff;
+	font-size: 24px;
+}
+
+#game{
+	margin-top: 40px;
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+
+#game .cell{
+	display: inline-block;
+	font-size: 24px;
+	margin: 3px;
+	padding: 15px 25px;
+	background-color: #eee;
+	border-radius: 4px;
+}
+
+#game .cell:hover{
+	background-color: #ddd;
+}
+
 
