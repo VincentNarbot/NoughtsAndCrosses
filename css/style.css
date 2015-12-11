@@ -21,12 +21,12 @@ header{
 	text-align: center;
 }
 
-#splash .btn-x,#splash .btn-y{
+#splash .btn-x,#splash .btn-o{
 	font-size: 24px;
 	margin: 5px;
 }
 
-#splash .btn-x:active,#splash .btn-y:active,#splash .btn-x:hover,#splash .btn-y:hover{
+#splash .active,#splash .btn-x:active,#splash .btn-o:active,#splash .btn-x:hover,#splash .btn-o:hover{
 	background-color: #5a8de5;
 	color: #fff;
 }
@@ -45,16 +45,24 @@ header{
 
 
 #game .cell{
+	width: 70px;
+	height: 70px;
 	display: inline-block;
-	font-size: 24px;
+	font-size: 35px;
 	margin: 3px;
-	padding: 15px 25px;
+	text-align: center;
 	background-color: #eee;
 	border-radius: 4px;
+	line-height: 70px;
+    vertical-align: middle;
 }
 
 #game .cell:hover{
 	background-color: #ddd;
+}
+
+#game .alert{
+	color: #e5261f;
 }
 
 
