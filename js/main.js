@@ -4,9 +4,10 @@ var playerChoice 				= "";
 var computerChoice 				= "";
 var gameArr 					= ["","","","","","","","",""];
 var gameArrWinningCombinaison 	= [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+var gameArrStrategicCombinaison = [[2,6],[0,8]];
 var gameArrBestMove 			= [4,0,2,6,8,1,3,5,7]; //Center / Side / Middle
 
-//Todo: If player play 0,6 or 2,8 we need to block him by playing 1,3,5 or 7
+//Todo: If player play 2,6 or 0,8 we need to block him by playing 1,3,5 or 7
 
 jQuery(function($) {
 	Init();
@@ -142,6 +143,39 @@ jQuery(function($) {
 		    			gameArr[b] = computerChoice;
 		    			$("#"+b).text(computerChoice);
 		   	  		}
+		   		}
+			}
+		}
+
+		//Player is trying to win in 2 turns.
+		if(!computerPlayed){
+			for(i = 0; i< gameArrStrategicCombinaison.length; i++){
+				var a = gameArrStrategicCombinaison[i][0];
+		   		var b = gameArrStrategicCombinaison[i][1];
+
+		   		if(gameArr[a] == gameArr[b] && gameArr[a] == playerChoice){
+		   			if(gameArr[1] != computerChoice && gameArr[3] != computerChoice && gameArr[5] != computerChoice && gameArr[7] != computerChoice){
+		   				if(gameArr[1] == "" && !computerPlayed){
+		   					computerPlayed = true;
+		    				gameArr[1] = computerChoice;
+		    				$("#"+1).text(computerChoice);
+		   				}
+		   				if(gameArr[3] == "" && !computerPlayed){
+		   					computerPlayed = true;
+		    				gameArr[3] = computerChoice;
+		    				$("#"+3).text(computerChoice);
+		   				}
+		   				if(gameArr[5] == "" && !computerPlayed){
+		   					computerPlayed = true;
+		    				gameArr[5] = computerChoice;
+		    				$("#"+5).text(computerChoice);
+		   				}
+		   				if(gameArr[7] == "" && !computerPlayed){
+		   					computerPlayed = true;
+		    				gameArr[7] = computerChoice;
+		    				$("#"+7).text(computerChoice);
+		   				}
+		   			}
 		   		}
 			}
 		}
