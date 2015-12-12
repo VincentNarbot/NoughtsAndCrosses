@@ -12,6 +12,7 @@ header{
 	background: #e56d2b;
 	color: #fff;
 	text-align: center;
+	border-bottom: 20px solid #c55e26;
 	padding: 10px;
 }
 
@@ -22,17 +23,25 @@ header{
 }
 
 #splash .btn-x,#splash .btn-o{
+	border: 1px solid #ddd;
 	font-size: 24px;
 	margin: 5px;
 }
 
 #splash .active,#splash .btn-x:active,#splash .btn-o:active,#splash .btn-x:hover,#splash .btn-o:hover{
+	border: 1px solid #5a8de5;
+	box-shadow: inset 0 3px 5px rgba(255, 255, 255, .125); 
 	background-color: #5a8de5;
 	color: #fff;
+	-webkit-box-shadow: 0 2px 0 #3c5e9b;
+    box-shadow: 0 2px 0 #3c5e9b;
 }
 
 #splash .btn-play{
+	text-transform: uppercase;
 	background-color: #e56d2b;
+	-webkit-box-shadow: 0 2px 0 #9d4b1e;
+    box-shadow: 0 2px 0 #9d4b1e;
 	color: #fff;
 	font-size: 24px;
 }
