@@ -77,14 +77,15 @@ jQuery(function($) {
 
 	function computerPlay(){
 		var computerPlayed = false;
-		//Computer play in function of player
+		
+		//Computer try to win first
 		if(!computerPlayed){
 			for(i = 0; i< gameArrWinningCombinaison.length; i++){
 				var a = gameArrWinningCombinaison[i][0];
 		   		var b = gameArrWinningCombinaison[i][1];
 		   		var c = gameArrWinningCombinaison[i][2];
 
-		   		if(gameArr[a] == gameArr[b] && gameArr[a] != ""){
+		   		if(gameArr[a] == gameArr[b] && gameArr[a] == computerChoice){
 		   			if(gameArr[c] == "" && !computerPlayed){
 		   				computerPlayed = true;
 		    			gameArr[c] = computerChoice;
@@ -92,7 +93,7 @@ jQuery(function($) {
 		   			}
 		   		}
 
-		   		if(gameArr[b] == gameArr[c] && gameArr[b] != "") {
+		   		if(gameArr[b] == gameArr[c] && gameArr[b] == computerChoice) {
 		   	  		if(gameArr[a] == "" && !computerPlayed){
 		   	  			computerPlayed = true;
 		    			gameArr[a] = computerChoice;
@@ -100,7 +101,40 @@ jQuery(function($) {
 		   	  		}
 		   		}
 
-		   		if(gameArr[a] == gameArr[c] && gameArr[a] != "") {
+		   		if(gameArr[a] == gameArr[c] && gameArr[a] == computerChoice) {
+		   	  		if(gameArr[b] == "" && !computerPlayed){
+		   	  			computerPlayed = true;
+		    			gameArr[b] = computerChoice;
+		    			$("#"+b).text(computerChoice);
+		   	  		}
+		   		}
+			}
+		}
+
+		//Computer blocks player moves
+		if(!computerPlayed){
+			for(i = 0; i< gameArrWinningCombinaison.length; i++){
+				var a = gameArrWinningCombinaison[i][0];
+		   		var b = gameArrWinningCombinaison[i][1];
+		   		var c = gameArrWinningCombinaison[i][2];
+
+		   		if(gameArr[a] == gameArr[b] && gameArr[a] == playerChoice){
+		   			if(gameArr[c] == "" && !computerPlayed){
+		   				computerPlayed = true;
+		    			gameArr[c] = computerChoice;
+		    			$("#"+c).text(computerChoice);
+		   			}
+		   		}
+
+		   		if(gameArr[b] == gameArr[c] && gameArr[b] == playerChoice) {
+		   	  		if(gameArr[a] == "" && !computerPlayed){
+		   	  			computerPlayed = true;
+		    			gameArr[a] = computerChoice;
+		    			$("#"+a).text(computerChoice);
+		   	  		}
+		   		}
+
+		   		if(gameArr[a] == gameArr[c] && gameArr[a] == playerChoice) {
 		   	  		if(gameArr[b] == "" && !computerPlayed){
 		   	  			computerPlayed = true;
 		    			gameArr[b] = computerChoice;
