@@ -3,8 +3,8 @@
 var playerChoice 				= "";
 var computerChoice 				= "";
 var gameArr 					= ["","","","","","","","",""];
-var gameArrWinningCombinaison 	= [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-var gameArrStrategicCombinaison = [[2,6],[0,8]];
+var gameArrWinningCombination 	= [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+var gameArrStrategicCombination = [[2,6],[0,8]]; 
 var gameArrBestMove 			= [4,0,2,6,8,1,3,5,7]; //Center / Side / Middle
 
 //Todo: If player play 2,6 or 0,8 we need to block him by playing 1,3,5 or 7
@@ -83,10 +83,10 @@ jQuery(function($) {
 
 		//Computer try to win first
 		if(!computerPlayed){
-			for(i = 0; i< gameArrWinningCombinaison.length; i++){
-				var a = gameArrWinningCombinaison[i][0];
-		   		var b = gameArrWinningCombinaison[i][1];
-		   		var c = gameArrWinningCombinaison[i][2];
+			for(i = 0; i< gameArrWinningCombination.length; i++){
+				var a = gameArrWinningCombination[i][0];
+		   		var b = gameArrWinningCombination[i][1];
+		   		var c = gameArrWinningCombination[i][2];
 
 		   		if(gameArr[a] == gameArr[b] && gameArr[a] == computerChoice){
 		   			if(gameArr[c] == "" && !computerPlayed){
@@ -116,10 +116,10 @@ jQuery(function($) {
 
 		//Computer blocks player moves
 		if(!computerPlayed){
-			for(i = 0; i< gameArrWinningCombinaison.length; i++){
-				var a = gameArrWinningCombinaison[i][0];
-		   		var b = gameArrWinningCombinaison[i][1];
-		   		var c = gameArrWinningCombinaison[i][2];
+			for(i = 0; i< gameArrWinningCombination.length; i++){
+				var a = gameArrWinningCombination[i][0];
+		   		var b = gameArrWinningCombination[i][1];
+		   		var c = gameArrWinningCombination[i][2];
 
 		   		if(gameArr[a] == gameArr[b] && gameArr[a] == playerChoice){
 		   			if(gameArr[c] == "" && !computerPlayed){
@@ -149,9 +149,9 @@ jQuery(function($) {
 
 		//Player is trying to win in 2 turns.
 		if(!computerPlayed){
-			for(i = 0; i< gameArrStrategicCombinaison.length; i++){
-				var a = gameArrStrategicCombinaison[i][0];
-		   		var b = gameArrStrategicCombinaison[i][1];
+			for(i = 0; i< gameArrStrategicCombination.length; i++){
+				var a = gameArrStrategicCombination[i][0];
+		   		var b = gameArrStrategicCombination[i][1];
 
 		   		if(gameArr[a] == gameArr[b] && gameArr[a] == playerChoice){
 		   			if(gameArr[1] != computerChoice && gameArr[3] != computerChoice && gameArr[5] != computerChoice && gameArr[7] != computerChoice){
@@ -185,7 +185,6 @@ jQuery(function($) {
 		    for(i = 0; i < gameArr.length; i++)
 		    {
 		    	var move = gameArrBestMove[i];
-
 		    	if(gameArr[move] == "" && !computerPlayed){
 		    		computerPlayed = true;
 		    		gameArr[move] = computerChoice;
@@ -201,10 +200,10 @@ jQuery(function($) {
 	function checkIfGameOver(){
 		var isEnded = false;
 		var isDraw = true;
-		for(i = 0; i < gameArrWinningCombinaison.length; i++){
-		   var a = gameArrWinningCombinaison[i][0];
-		   var b = gameArrWinningCombinaison[i][1];
-		   var c = gameArrWinningCombinaison[i][2];
+		for(i = 0; i < gameArrWinningCombination.length; i++){
+		   var a = gameArrWinningCombination[i][0];
+		   var b = gameArrWinningCombination[i][1];
+		   var c = gameArrWinningCombination[i][2];
 		  
 		   if(gameArr[a] == "" || gameArr[b] == "" || gameArr[c] == "") {
 		   		isDraw = false;
@@ -228,6 +227,4 @@ jQuery(function($) {
 		}
 		return isEnded;
 	} 
-
-
 });
