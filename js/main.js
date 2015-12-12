@@ -4,6 +4,7 @@ var playerChoice 				= "";
 var computerChoice 				= "";
 var gameArr 					= ["","","","","","","","",""];
 var gameArrWinningCombinaison 	= [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+var gameArrBestMove 			= [4,0,2,6,8,1,3,5,7]; //Center / Side / Middle
 
 jQuery(function($) {
 	Init();
@@ -75,7 +76,56 @@ jQuery(function($) {
 	});
 
 	function computerPlay(){
-		
+		var computerPlayed = false;
+		//Computer play in function of player
+		if(!computerPlayed){
+			for(i = 0; i< gameArrWinningCombinaison.length; i++){
+				var a = gameArrWinningCombinaison[i][0];
+		   		var b = gameArrWinningCombinaison[i][1];
+		   		var c = gameArrWinningCombinaison[i][2];
+
+		   		if(gameArr[a] == gameArr[b] && gameArr[a] != ""){
+		   			if(gameArr[c] == "" && !computerPlayed){
+		   				computerPlayed = true;
+		    			gameArr[c] = computerChoice;
+		    			$("#"+c).text(computerChoice);
+		   			}
+		   		}
+
+		   		if(gameArr[b] == gameArr[c] && gameArr[b] != "") {
+		   	  		if(gameArr[a] == "" && !computerPlayed){
+		   	  			computerPlayed = true;
+		    			gameArr[a] = computerChoice;
+		    			$("#"+a).text(computerChoice);
+		   	  		}
+		   		}
+
+		   		if(gameArr[a] == gameArr[c] && gameArr[a] != "") {
+		   	  		if(gameArr[b] == "" && !computerPlayed){
+		   	  			computerPlayed = true;
+		    			gameArr[b] = computerChoice;
+		    			$("#"+b).text(computerChoice);
+		   	  		}
+		   		}
+			}
+		}
+
+		//Computer plays best Move possible.
+		if(!computerPlayed){
+		    for(i = 0; i < gameArr.length; i++)
+		    {
+		    	var move = gameArrBestMove[i];
+
+		    	if(gameArr[move] == "" && !computerPlayed){
+		    		computerPlayed = true;
+		    		gameArr[move] = computerChoice;
+		    		$("#"+move).text(computerChoice);
+		    	}
+		     }
+	 	}
+
+	 	//Check if game is ended
+	 	checkIfGameOver();
 	}
 
 	function checkIfGameOver(){
@@ -102,7 +152,7 @@ jQuery(function($) {
 
 		if(isDraw){
 			isEnded = true;
-			swal({title: "No one won", text: "Do you want to play again? ", showCancelButton: false, confirmButtonText: "PLAY AGAIN", confirmButtonColor: "#e56d2b", closeOnConfirm: true}, function(){
+			swal({title: "We have a Tie !", text: "Do you want to play again? ", showCancelButton: false, confirmButtonText: "PLAY AGAIN", confirmButtonColor: "#e56d2b", closeOnConfirm: true}, function(){
 					Init();
 			});
 		}
