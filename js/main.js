@@ -1,13 +1,17 @@
 // Noughts And Crosses
 
+// Game Grid:
+// 0 1 2
+// 3 4 5
+// 6 7 8
+
 var playerChoice 				= "";
 var computerChoice 				= "";
 var gameArr 					= ["","","","","","","","",""];
 var gameArrWinningCombination 	= [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
 var gameArrStrategicCombination = [[2,6],[0,8]]; 
-var gameArrBestMove 			= [4,0,2,6,8,1,3,5,7]; //Center / Side / Middle
-
-//Todo: If player play 2,6 or 0,8 we need to block him by playing 1,3,5 or 7
+var gameArrBestMoveUp 			= [4,0,2,6,8,1,3,5,7]; //Center / Side / Middle
+var gameArrBestMoveDown			= [4,6,8,0,2,5,7,1,3]; //Center / Side / Middle
 
 jQuery(function($) {
 	Init();
@@ -182,7 +186,15 @@ jQuery(function($) {
 
 		//Computer plays best Move possible.
 		if(!computerPlayed){
-		    for(i = 0; i < gameArr.length; i++)
+			var gameArrBestMove = [];
+			if(gameArr[0] == playerChoice || gameArr[2] == playerChoice){
+				 gameArrBestMove = gameArrBestMoveDown;
+			}
+			else {
+				 gameArrBestMove = gameArrBestMoveUp;
+			}
+			
+		    for(i = 0; i < gameArrBestMove.length; i++)
 		    {
 		    	var move = gameArrBestMove[i];
 		    	if(gameArr[move] == "" && !computerPlayed){
